@@ -1,6 +1,6 @@
 {
   "name": "@kiip/indexeddb",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Indexed DB Database layer for kiip",
   "keywords": [],
   "homepage": "https://github.com/etienne-dldc/kiip-indexeddb#readme",
@@ -30,8 +30,11 @@
     "start": "tsdx watch",
     "test": "tsdx test --coverage"
   },
-  "dependencies": {},
+  "dependencies": {
+    "idb": "^5.0.4"
+  },
   "devDependencies": {
+    "@kiip/core": "^0.1.0",
     "@types/jest": "^26.0.0",
     "codecov": "^3.6.5",
     "core-js": "3.6.5",
@@ -39,5 +42,8 @@
     "tsdx": "^0.13.2",
     "tslib": "^2.0.0",
     "typescript": "^3.9.2"
+  },
+  "peerDependencies": {
+    "@kiip/core": "^0.1.0"
   }
 }

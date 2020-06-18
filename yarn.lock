@@ -981,6 +981,14 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@kiip/core@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@kiip/core/-/core-0.1.0.tgz#1b2409c1026828f6d971c0e72519b80306aa441c"
+  integrity sha512-JCGQdmlotUDeXyFDo5Q69i94bpZCX8HA2Z0dy+c/Mrb10ow9VGxwvTc1u1wpQA5E6XCfgHIIJhvoVdEasHTSIQ==
+  dependencies:
+    nanoid "^3.1.10"
+    suub "^3.0.0"
+
 "@rollup/plugin-commonjs@^11.0.0":
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-11.1.0.tgz#60636c7a722f54b41e419e1709df05c7234557ef"
@@ -3303,6 +3311,11 @@ iconv-lite@0.4.24, iconv-lite@^0.4.24:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
+idb@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/idb/-/idb-5.0.4.tgz#9b6d42d5eff3c7f063b6f4d3e7c7e9aaeae2fd7a"
+  integrity sha512-g+CRa0NLB5R+VTd8UQK/J8eEPlZk82iwekJQOYA0bFJsc7TGDKyBywNmLBUdHPUyyazV1wN8DdHhSKzEX9Z9kQ==
+
 ignore-walk@3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/ignore-walk/-/ignore-walk-3.0.3.tgz#017e2447184bfeade7c238e4aefdd1e8f95b1e37"
@@ -4791,6 +4804,11 @@ nan@^2.12.1:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.1.tgz#d7be34dfa3105b91494c3147089315eff8874b01"
   integrity sha512-isWHgVjnFjh2x2yuJ/tj3JbwoHu3UC2dX5G/88Cm24yB6YopVgxvBObDY7n5xW6ExmFhJpSEQqFPvq9zaXc8Jw==
+
+nanoid@^3.1.10:
+  version "3.1.10"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.10.tgz#69a8a52b77892de0d11cede96bc9762852145bc4"
+  integrity sha512-iZFMXKeXWkxzlfmMfM91gw7YhN2sdJtixY+eZh9V6QWJWTOiurhpKhBMgr82pfzgSqglQgqYSCowEYsz8D++6w==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -6448,6 +6466,11 @@ supports-hyperlinks@^2.0.0:
   dependencies:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
+
+suub@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/suub/-/suub-3.0.0.tgz#4799270398a658eeaea50d7d1243b79e8a25e691"
+  integrity sha512-/zv13/5joBIq9oMzFk5L2XL/RTG/yeMGkew6N+o6MYeJFk/t+//XSbbYDuoOCip1hoTxXP+abq4n40TBHUMTxQ==
 
 symbol-observable@^1.1.0, symbol-observable@^1.2.0:
   version "1.2.0"
