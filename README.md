@@ -1,1 +1,3 @@
-# Package Template
+# Kiip IndexedDB
+
+> Indexed DB Database layer for kiip

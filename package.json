@@ -1,20 +1,20 @@
 {
-  "name": "package-template",
+  "name": "@kiip/indexeddb",
   "version": "0.0.0",
-  "description": "",
+  "description": "Indexed DB Database layer for kiip",
   "keywords": [],
-  "homepage": "https://github.com/etienne-dldc/package-template#readme",
+  "homepage": "https://github.com/etienne-dldc/kiip-indexeddb#readme",
   "bugs": {
-    "url": "https://github.com/etienne-dldc/package-template/issues"
+    "url": "https://github.com/etienne-dldc/kiip-indexeddb/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/etienne-dldc/package-template.git"
+    "url": "git+ssh://git@github.com/etienne-dldc/kiip-indexeddb.git"
   },
   "license": "MIT",
   "author": "Etienne Dldc <e.deladonchamps@gmail.com>",
   "main": "index.js",
-  "module": "dist/package-template.esm.js",
+  "module": "dist/kiip.indexeddb.esm.js",
   "typings": "dist/index.d.ts",
   "directories": {
     "example": "examples",
