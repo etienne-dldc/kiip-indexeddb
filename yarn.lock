@@ -981,10 +981,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@kiip/core@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@kiip/core/-/core-0.2.2.tgz#993ebcfd0473e790975e9041b6890acaec3d94e1"
-  integrity sha512-AuriL1uTF8Ppya9c0MGncAR3O4OoJUafgDyw+uXvysZj4HGKBiTzsUqFGd0tXvWz8wPLyTSCrLF1Oa2EhV0b5Q==
+"@kiip/core@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@kiip/core/-/core-0.3.0.tgz#3539a9196f60522896c73dd8d3f95de584dc28c1"
+  integrity sha512-dMAJrnqgcW4B0fCDDEKlU1KJCHJxn5ap+iBs+DXgwC84eXHUJTSkSVBAC2g57AA4JjBPUhVq4irs6e+62929Fg==
   dependencies:
     nanoid "^3.1.10"
     suub "^3.0.0"

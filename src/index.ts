@@ -1,9 +1,8 @@
 import {
   KiipDatabase,
   KiipFragment,
-  KiipDocumentInternal,
+  KiipDocument,
   Timestamp,
-  OnFragment,
   createKiipPromise,
   kiipCallbackFromAsync
 } from '@kiip/core';
@@ -19,13 +18,15 @@ export interface BackendDB extends DBSchema {
   };
   documents: {
     key: string;
-    value: KiipDocumentInternal;
+    value: KiipDocument<unknown>;
   };
 }
 
 export type BackendTransaction = IDBPTransaction<BackendDB, ['documents', 'fragments']>;
 
-export async function KiipIndexedDB(dbName: string): Promise<KiipDatabase<BackendTransaction>> {
+export async function KiipIndexedDB(
+  dbName: string
+): Promise<KiipDatabase<BackendTransaction, unknown>> {
   const db = await openDB<BackendDB>(dbName, 1, {
     upgrade(db) {
       db.createObjectStore('documents', {
@@ -43,7 +44,6 @@ export async function KiipIndexedDB(dbName: string): Promise<KiipDatabase<Backen
     withTransaction(exec) {
       return createKiipPromise(resolve => {
         const tx: BackendTransaction = db.transaction(['documents', 'fragments'], 'readwrite');
-        let res;
         return exec(tx, val => {
           return kiipCallbackFromAsync(async () => {
             await tx.done;
@@ -112,6 +112,18 @@ export async function KiipIndexedDB(dbName: string): Promise<KiipDatabase<Backen
     addDocument(tx, document, onResolve) {
       return kiipCallbackFromAsync(async () => {
         await tx.objectStore('documents').add(document);
+      }, onResolve);
+    },
+    setMetadata(tx, documentId, meta, onResolve) {
+      return kiipCallbackFromAsync(async () => {
+        const doc = await tx.objectStore('documents').get(documentId);
+        if (!doc) {
+          throw new Error(`Cannot find document ${documentId}`);
+        }
+        await tx.objectStore('documents').put({
+          ...doc,
+          meta
+        });
       }, onResolve);
     }
   };
