@@ -24,9 +24,7 @@ export interface BackendDB extends DBSchema {
 
 export type BackendTransaction = IDBPTransaction<BackendDB, ['documents', 'fragments']>;
 
-export async function KiipIndexedDB(
-  dbName: string
-): Promise<KiipDatabase<BackendTransaction, unknown>> {
+export async function KiipIndexedDB(dbName: string): Promise<KiipDatabase<BackendTransaction>> {
   const db = await openDB<BackendDB>(dbName, 1, {
     upgrade(db) {
       db.createObjectStore('documents', {
