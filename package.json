@@ -14,7 +14,7 @@
   "license": "MIT",
   "author": "Etienne Dldc <e.deladonchamps@gmail.com>",
   "main": "index.js",
-  "module": "dist/kiip.indexeddb.esm.js",
+  "module": "dist/indexeddb.esm.js",
   "typings": "dist/index.d.ts",
   "directories": {
     "example": "examples",
