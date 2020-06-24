@@ -94,7 +94,7 @@ export async function KiipIndexedDB(dbName: string): Promise<KiipDatabase<Backen
       return kiipCallbackFromAsync(async () => {
         const doc = await tx.objectStore('documents').get(documentId);
         if (!doc) {
-          throw new Error(`Cannot find document ${documentId}`);
+          return;
         }
         return doc;
       }, onResolve);
