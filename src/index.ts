@@ -7,6 +7,7 @@ import {
   kiipCallbackFromAsync
 } from '@kiip/core';
 import { openDB, DBSchema, IDBPTransaction } from 'idb';
+import { Subscription } from 'suub';
 
 export interface BackendDB extends DBSchema {
   fragments: {
@@ -38,7 +39,30 @@ export async function KiipIndexedDB(dbName: string): Promise<KiipDatabase<Backen
     }
   });
 
+  const documentsSub = Subscription<Array<KiipDocument<unknown>>>();
+  const documentSub = Subscription<KiipDocument<unknown>>();
+
+  const documentsChannel = new BroadcastChannel(`KIIP_DOCUMENTS_${dbName}`);
+  documentsChannel.addEventListener('message', e => {
+    documentsSub.emit(e.data);
+  });
+
+  const documentChannel = new BroadcastChannel(`KIIP_DOCUMENT_${dbName}`);
+  documentChannel.addEventListener('message', e => {
+    documentSub.emit(e.data);
+  });
+
   return {
+    subscribeDocuments(callback) {
+      return documentsSub.subscribe(callback);
+    },
+    subscribeDocument(documentId, callback) {
+      return documentSub.subscribe(doc => {
+        if (doc.id === documentId) {
+          callback(doc);
+        }
+      });
+    },
     withTransaction(exec) {
       return createKiipPromise(resolve => {
         const tx: BackendTransaction = db.transaction(['documents', 'fragments'], 'readwrite');
@@ -109,7 +133,11 @@ export async function KiipIndexedDB(dbName: string): Promise<KiipDatabase<Backen
     },
     addDocument(tx, document, onResolve) {
       return kiipCallbackFromAsync(async () => {
-        await tx.objectStore('documents').add(document);
+        const docsStore = tx.objectStore('documents');
+        await docsStore.add(document);
+        const docs = await docsStore.getAll();
+        documentsSub.emit(docs);
+        documentsChannel.postMessage(docs);
       }, onResolve);
     },
     setMetadata(tx, documentId, meta, onResolve) {
@@ -122,6 +150,11 @@ export async function KiipIndexedDB(dbName: string): Promise<KiipDatabase<Backen
           ...doc,
           meta
         });
+        const docs = await tx.objectStore('documents').getAll();
+        documentsSub.emit(docs);
+        documentsChannel.postMessage(docs);
+        documentSub.emit(doc);
+        documentChannel.postMessage(doc);
       }, onResolve);
     }
   };
