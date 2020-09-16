@@ -1,6 +1,6 @@
 {
   "name": "@kiip/indexeddb",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Indexed DB Database layer for kiip",
   "keywords": [],
   "homepage": "https://github.com/etienne-dldc/kiip-indexeddb#readme",
